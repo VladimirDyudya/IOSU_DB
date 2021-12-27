@@ -3,5 +3,5 @@
 --ListPrice и ProductLine.
 SELECT [Name], ListPrice, ProductLine FROM Production.Product
 WHERE ListPrice < ALL(SELECT AVG(ListPrice) as AvgListPrice FROM Production.Product
-WHERE ProductLine IS NOT NULL
+WHERE ProductLine IS NOT NULL AND ListPrice > 0
 GROUP BY ProductLine)
