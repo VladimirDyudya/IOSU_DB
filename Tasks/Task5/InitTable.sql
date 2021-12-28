@@ -1,0 +1,70 @@
+USE TrafficPolice;
+
+
+CREATE TABLE Manufacter (
+    ManufacterID INT PRIMARY KEY IDENTITY(1,1),
+    [Name] VARCHAR(255) NOT NULL,
+);
+
+CREATE TABLE Model (
+    ModelID INT PRIMARY KEY IDENTITY(1,1),
+	ManufacterID INT NOT NULL,
+	FOREIGN KEY (ManufacterID) REFERENCES Manufacter (ManufacterID),
+	[Name] VARCHAR(255) NOT NULL,
+);
+
+CREATE TABLE Color (
+    ColorID INT PRIMARY KEY IDENTITY(1,1),
+    [Name] VARCHAR(255) NOT NULL,
+);
+
+CREATE TABLE Driver (
+    DriverID INT PRIMARY KEY IDENTITY(1,1),
+    FirstName VARCHAR(255) NOT NULL,
+	SurName VARCHAR(255) NOT NULL,
+	LastName VARCHAR(255) NOT NULL,
+	PassportID VARCHAR(255) NOT NULL,
+);
+
+
+CREATE TABLE Car (
+	CarID INT PRIMARY KEY IDENTITY(1,1),
+	RegistrationNumber VARCHAR(255) NOT NULL,
+	ModelID INT NOT NULL,
+	FOREIGN KEY (ModelID) REFERENCES Model (ModelID),
+	ColorID INT NOT NULL,
+	FOREIGN KEY (ColorID) REFERENCES Color (ColorID),
+	ReleaseDate DATE NOT NULL,
+);
+
+CREATE TABLE [Owner] (
+    [OwnerID] INT PRIMARY KEY IDENTITY(1,1),
+	CarID INT NOT NULL,
+	FOREIGN KEY (CarID) REFERENCES Car (CarID),
+    DriverID INT NOT NULL,
+	FOREIGN KEY (DriverID) REFERENCES Driver (DriverID),
+	BeginDate DATE NOT NULL,
+	EndDate DATE,
+);
+
+CREATE TABLE Hijacking (
+	HijackingID INT PRIMARY KEY IDENTITY(1,1),
+	CarID INT NOT NULL,
+	FOREIGN KEY (CarID) REFERENCES Car (CarID),
+	HijackingDate DATE NOT NULL,
+	Hijack BIT NOT NULL,
+);
+
+CREATE TABLE Accident (
+	AccidentID INT PRIMARY KEY IDENTITY(1,1),
+	AccidentDescription VARCHAR(255) NOT NULL,
+	AccidentDate VARCHAR(255) NOT NULL,
+);
+
+CREATE TABLE AccidentMember (
+	AccidentMemberID INT PRIMARY KEY IDENTITY(1,1),
+	CarID INT NOT NULL,
+	FOREIGN KEY (CarID) REFERENCES Car (CarID),
+	AccidentID INT NOT NULL,
+	FOREIGN KEY (AccidentID) REFERENCES Accident (AccidentID),
+);
