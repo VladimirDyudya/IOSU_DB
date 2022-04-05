@@ -1,6 +1,5 @@
 USE TrafficPolice;
 
-
 CREATE TABLE Manufacter (
     ManufacterID INT PRIMARY KEY IDENTITY(1,1),
     [Name] VARCHAR(255) NOT NULL,
@@ -25,7 +24,6 @@ CREATE TABLE Driver (
 	LastName VARCHAR(255) NOT NULL,
 	PassportID VARCHAR(255) NOT NULL,
 );
-
 
 CREATE TABLE Car (
 	CarID INT PRIMARY KEY IDENTITY(1,1),
