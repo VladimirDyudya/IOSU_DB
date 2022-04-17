@@ -1,0 +1,8 @@
+USE TrafficPolice;
+
+CREATE TABLE Accident (
+	ID UNIQUEIDENTIFIER DEFAULT NEWID()
+	CONSTRAINT PK_Accident PRIMARY KEY,
+	AccidentDescription VARCHAR(255) NOT NULL,
+	AccidentDate VARCHAR(255) NOT NULL,
+);
