@@ -1,37 +1,39 @@
+USE TrafficPolice;
+
 -- Insert Manufacters
-INSERT INTO Manufacter VALUES (NEWID(), 'Porsche');
-INSERT INTO Manufacter VALUES (NEWID(), 'BMW');
+EXEC dbo.pManufacterInsert 'Porsche'
+EXEC dbo.pManufacterInsert 'BMW'
 
 -- Insert Models
-INSERT INTO Model VALUES (NEWID(), (SELECT ID FROM Manufacter WHERE [Name]='Porsche'), 'Cayenne');
-INSERT INTO Model VALUES (NEWID(), (SELECT ID FROM Manufacter WHERE [Name]='Porsche'), 'Macan');
-INSERT INTO Model VALUES (NEWID(), (SELECT ID FROM Manufacter WHERE [Name]='BMW'), 'x5');
+EXEC dbo.pModelInsert 'Porsche', 'Cayenne'
+EXEC dbo.pModelInsert 'Porsche', 'Macan'
+EXEC dbo.pModelInsert 'BMW', 'x5'
 
 -- Insert Colors
-INSERT INTO Color VALUES (NEWID(), 'Yellow');
-INSERT INTO Color VALUES (NEWID(), 'Gray');
-INSERT INTO Color VALUES (NEWID(), 'Black');
+EXEC dbo.pColorInsert 'Yellow'
+EXEC dbo.pColorInsert 'Gray'
+EXEC dbo.pColorInsert 'Black'
 
 -- Insert Drivers
-INSERT INTO Driver VALUES (NEWID(), 'Petr', 'Vasilevich', 'Lovin', '1712 252037');
-INSERT INTO Driver VALUES (NEWID(), 'Andrey', 'Sergeevich', 'Petrov', '3213 213321');
+EXEC dbo.pDriverInsert 'Petr', 'Vasilevich', 'Lovin', '1754 544037'
+EXEC dbo.pDriverInsert 'Andrey', 'Sergeevich', 'Petrov', '3213 213321'
 
 --Insert Cars
-INSERT INTO Car VALUES (NEWID(), 'ЕК323Х', (SELECT ID FROM Model WHERE [Name]='Cayenne'), (SELECT ID FROM Color WHERE [Name]='Yellow'), '1999-04-12');
-INSERT INTO Car VALUES (NEWID(), 'ОК374Т', (SELECT ID FROM Model WHERE [Name]='x5'), (SELECT ID FROM Color WHERE [Name]='Gray'), '2000-10-15');
+EXEC dbo.pCarInsert 'ЕК323Х', 'Cayenne', 'Yellow', '1999-04-12'
+EXEC dbo.pCarInsert 'ОК374Т', 'x5', 'Gray', '2000-10-15'
 
 -- Insert Owners
-INSERT INTO [Owner] VALUES (NEWID(), (SELECT ID FROM Car WHERE RegistrationNumber='ЕК323Х'),(SELECT ID FROM Driver WHERE FirstName='Petr'),'1999-04-19',NULL);
-INSERT INTO [Owner] VALUES (NEWID(), (SELECT ID FROM Car WHERE RegistrationNumber='ОК374Т'),(SELECT ID FROM Driver WHERE FirstName='Andrey'),'2003-10-11', '2009-10-19');
-INSERT INTO [Owner] VALUES (NEWID(), (SELECT ID FROM Car WHERE RegistrationNumber='ОК374Т'),(SELECT ID FROM Driver WHERE FirstName='Petr'),'2009-10-20', NULL);
+EXEC dbo.pOwnerInsert 'ЕК323Х', '1754 544037', '1999-04-19', NULL
+EXEC dbo.pOwnerInsert 'ОК374Т', '3213 213321','2003-10-11', '2009-10-19'
+EXEC dbo.pOwnerInsert 'ОК374Т', '1754 544037','2009-10-20', NULL
 
 --Insert Hijacking
-INSERT INTO Hijacking VALUES (NEWID(), (SELECT ID FROM Car WHERE RegistrationNumber='ЕК323Х'),'2003-10-24', 1);
+EXEC dbo.pHijackingInsert 'ЕК323Х', '2003-10-24', 1
 
 --Insert Hijacking
-INSERT INTO Accident VALUES (NEWID(), 'Два автомобиля столкнулись', '2005-10-11');
-INSERT INTO Accident VALUES (NEWID(), 'Два автомобиля столкнулись', '2010-10-11');
+EXEC dbo.pAccidentInsert 'EF546EF', 'Два автомобиля столкнулись', '2005-10-11'
+EXEC dbo.pAccidentInsert 'EFER433', 'Два автомобиля столкнулись', '2010-10-11'
 
 --Insert AccidentMembers
-INSERT INTO AccidentMember VALUES (NEWID(), (SELECT ID FROM Car WHERE RegistrationNumber='ЕК323Х'), (SELECT ID FROM Accident WHERE AccidentDate='2005-10-11'));
-INSERT INTO AccidentMember VALUES (NEWID(), (SELECT ID FROM Car WHERE RegistrationNumber='ОК374Т'), (SELECT ID FROM Accident WHERE AccidentDate='2005-10-11'));
+EXEC dbo.pAccidentMemberInsert 'ЕК323Х', 'EF546EF'
+EXEC dbo.pAccidentMemberInsert 'ОК374Т', 'EF546EF'

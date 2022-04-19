@@ -1,0 +1,10 @@
+CREATE FUNCTION dbo.fAccidentMemberID
+(
+	@AccidentUni VARCHAR(255)
+)
+RETURNS UNIQUEIDENTIFIER
+AS
+BEGIN
+	DECLARE @ID_Accident UNIQUEIDENTIFIER = (SELECT TOP 1 ID FROM Accident WHERE AccidentUni = @AccidentUni);
+	RETURN @ID_Accident;
+END;
