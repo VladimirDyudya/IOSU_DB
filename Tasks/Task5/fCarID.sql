@@ -1,0 +1,10 @@
+CREATE FUNCTION dbo.fCarID
+(
+	@RegistrationNumber VARCHAR(255)
+)
+RETURNS UNIQUEIDENTIFIER
+AS
+BEGIN
+	DECLARE @ID_Car UNIQUEIDENTIFIER = (SELECT TOP 1 ID FROM Car WHERE RegistrationNumber = @RegistrationNumber);
+	RETURN @ID_Car;
+END;
