@@ -103,6 +103,12 @@
           <AssociatedConnUserName />
           <FullPath>CREATE_TABLE_Owner.sql</FullPath>
         </FileNode>
+        <FileNode Name="CREATE_TABLE_Records.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-PCQNKG7616T\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-PCQNKG7616T\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>CREATE_TABLE_Records.sql</FullPath>
+        </FileNode>
         <FileNode Name="fAccidentID.sql">
           <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-PCQNKG7616T\MSSQLSERVER01:True</AssociatedConnectionMoniker>
           <AssociatedConnSrvName>WIN-PCQNKG7616T\MSSQLSERVER01</AssociatedConnSrvName>
@@ -216,6 +222,18 @@
           <AssociatedConnSrvName>WIN-PCQNKG7616T\MSSQLSERVER01</AssociatedConnSrvName>
           <AssociatedConnUserName />
           <FullPath>pOwner.sql</FullPath>
+        </FileNode>
+        <FileNode Name="test.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-PCQNKG7616T\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-PCQNKG7616T\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>test.sql</FullPath>
+        </FileNode>
+        <FileNode Name="trigger.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:WIN-PCQNKG7616T\MSSQLSERVER01:True</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>WIN-PCQNKG7616T\MSSQLSERVER01</AssociatedConnSrvName>
+          <AssociatedConnUserName />
+          <FullPath>trigger.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>
